@@ -107,9 +107,8 @@ const Sidebar: React.FC = () => {
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 border-r border-gray-200 flex flex-col justify-between transition-transform duration-300 transform
+        className={`fixed top-0 left-0 h-screen w-64 bg-white shadow-lg z-50 border-r border-gray-200 flex flex-col justify-between transition-transform duration-300 transform
           ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
-        style={{ height: '100vh', minHeight: '100vh' }}
       >
         {/* Mobile Close Button */}
         <div className="md:hidden flex justify-end p-4">
@@ -146,10 +145,9 @@ const Sidebar: React.FC = () => {
               </PrefetchLink>
             ))}
           </nav>
-        </div>
 
         {/* Bottom Section */}
-        <div className="space-y-6 p-4">
+        <div className="space-y-[2rem] p-4 mt-[4rem]">
           {/* Upgrade Card */}
           <div className="p-4 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl text-white shadow-lg">
             <div className="text-sm font-semibold mb-1">Current Plan: Free</div>
@@ -180,6 +178,9 @@ const Sidebar: React.FC = () => {
             </PrefetchLink>
           </div>
         </div>
+
+        </div>
+
       </aside>
     </>
   );
