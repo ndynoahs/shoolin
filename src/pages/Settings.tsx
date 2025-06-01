@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { 
-  LayoutDashboard, 
-  Wrench, 
-  History, 
-  GraduationCap, 
-  MessageCircle, 
+import React, { useState } from "react";
+import {
+  LayoutDashboard,
+  Wrench,
+  History,
+  GraduationCap,
+  MessageCircle,
   ClipboardList,
   HelpCircle,
   Settings,
   Mail,
   Trash2,
-  Edit3
-} from 'lucide-react';
-import ContentHeader from '../layout/ContentHeader';
+  Edit3,
+} from "lucide-react";
+import ContentHeader from "../layout/ContentHeader";
 
 interface TeamMember {
   id: string;
@@ -24,40 +24,39 @@ interface TeamMember {
 }
 
 const TeamSettingsPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('Teams');
-  const [inviteEmail, setInviteEmail] = useState('');
-  
+  const [activeTab, setActiveTab] = useState("Teams");
+  const [inviteEmail, setInviteEmail] = useState("");
+
   const [teamMembers] = useState<TeamMember[]>([
     {
-      id: '1',
-      name: 'Jimoh Rasheed',
-      email: 'johndoe@gmail.com',
-      avatar: '/api/placeholder/40/40',
-      dateAdded: 'Feb 22, 2022',
-      lastEdited: 'Feb 22, 2022'
-    }
+      id: "1",
+      name: "Jimoh Rasheed",
+      email: "johndoe@gmail.com",
+      avatar: "/api/placeholder/40/40",
+      dateAdded: "Feb 22, 2022",
+      lastEdited: "Feb 22, 2022",
+    },
   ]);
 
   const sidebarItems = [
-    { icon: LayoutDashboard, label: 'Dashboard', active: false },
-    { icon: Wrench, label: 'AI Tools', active: false },
-    { icon: History, label: 'Work History', active: false },
-    { icon: GraduationCap, label: 'Launch a Class', active: false },
-    { icon: MessageCircle, label: 'AI Chat', active: false },
-    { icon: ClipboardList, label: 'Assignment', active: false },
+    { icon: LayoutDashboard, label: "Dashboard", active: false },
+    { icon: Wrench, label: "AI Tools", active: false },
+    { icon: History, label: "Work History", active: false },
+    { icon: GraduationCap, label: "Launch a Class", active: false },
+    { icon: MessageCircle, label: "AI Chat", active: false },
+    { icon: ClipboardList, label: "Assignment", active: false },
   ];
 
   const handleSendInvite = () => {
     if (inviteEmail.trim()) {
-      console.log('Sending invite to:', inviteEmail);
-      setInviteEmail('');
+      console.log("Sending invite to:", inviteEmail);
+      setInviteEmail("");
     }
   };
 
   return (
     <div className="flex min-h-screen bg-gray-50">
       {/* Sidebar */}
-   
 
       {/* Main Content */}
       <div className="flex-1">
@@ -65,20 +64,19 @@ const TeamSettingsPage: React.FC = () => {
 
         <ContentHeader title="Settings" />
 
-
         {/* Content */}
         <div className="p-8">
           {/* Tabs */}
           <div className="border-b border-gray-200 mb-8">
             <nav className="flex space-x-8">
-              {['Profile', 'Teams', 'Billings'].map((tab) => (
+              {["Profile", "Teams", "Billings"].map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`py-2 px-1 border-b-2 font-medium text-sm ${
                     activeTab === tab
-                      ? 'border-purple-600 text-purple-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                      ? "border-purple-600 text-purple-600"
+                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                   }`}
                 >
                   {tab}
@@ -90,15 +88,23 @@ const TeamSettingsPage: React.FC = () => {
           {/* Team Members Section */}
           <div className="max-w-4xl">
             <div className="mb-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-2">Team Members</h2>
-              <p className="text-gray-600">Manage your team members and their account permissions here.</p>
+              <h2 className="text-xl font-bold text-gray-900 mb-2">
+                Team Members
+              </h2>
+              <p className="text-gray-600">
+                Manage your team members and their account permissions here.
+              </p>
             </div>
 
             {/* Invite Section */}
             <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Invite people to your team</h3>
-              <p className="text-gray-600 mb-4">We'll email them instructions and a link to create an account</p>
-              
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                Invite people to your team
+              </h3>
+              <p className="text-gray-600 mb-4">
+                We'll email them instructions and a link to create an account
+              </p>
+
               <div className="flex gap-3">
                 <div className="flex-1">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -128,7 +134,8 @@ const TeamSettingsPage: React.FC = () => {
 
             {/* Team Members Table */}
             <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-              <div className="px-6 py-4 border-b border-gray-200">
+              {/* Desktop Header - Hidden on mobile */}
+              <div className="hidden md:block px-6 py-4 border-b border-gray-200">
                 <div className="grid grid-cols-4 gap-4">
                   <div className="font-medium text-gray-900">Name</div>
                   <div className="font-medium text-gray-900">Date added</div>
@@ -136,19 +143,30 @@ const TeamSettingsPage: React.FC = () => {
                   <div></div>
                 </div>
               </div>
-              
+
               {teamMembers.map((member) => (
-                <div key={member.id} className="px-6 py-4 border-b border-gray-100 last:border-b-0">
-                  <div className="grid grid-cols-4 gap-4 items-center">
+                <div
+                  key={member.id}
+                  className="px-6 py-4 border-b border-gray-100 last:border-b-0"
+                >
+                  {/* Desktop Layout */}
+                  <div className="hidden md:grid grid-cols-4 gap-4 items-center">
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
                         <span className="text-white font-medium text-sm">
-                          {member.name.split(' ').map(n => n[0]).join('')}
+                          {member.name
+                            .split(" ")
+                            .map((n) => n[0])
+                            .join("")}
                         </span>
                       </div>
                       <div>
-                        <div className="font-medium text-gray-900">{member.name}</div>
-                        <div className="text-sm text-gray-500">{member.email}</div>
+                        <div className="font-medium text-gray-900">
+                          {member.name}
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {member.email}
+                        </div>
                       </div>
                     </div>
                     <div className="text-gray-600">{member.dateAdded}</div>
@@ -160,6 +178,60 @@ const TeamSettingsPage: React.FC = () => {
                       <button className="p-2 text-gray-500 hover:bg-gray-50 rounded-lg transition-colors">
                         <Edit3 className="w-4 h-4" />
                       </button>
+                    </div>
+                  </div>
+
+                  {/* Mobile Layout */}
+                  <div className="md:hidden space-y-3">
+                    {/* Member Info */}
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                          <span className="text-white font-medium text-sm">
+                            {member.name
+                              .split(" ")
+                              .map((n) => n[0])
+                              .join("")}
+                          </span>
+                        </div>
+                        <div>
+                          <div className="font-medium text-gray-900">
+                            {member.name}
+                          </div>
+                          <div className="text-sm text-gray-500">
+                            {member.email}
+                          </div>
+                        </div>
+                      </div>
+                      {/* Actions */}
+                      <div className="flex items-center space-x-2">
+                        <button className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors">
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                        <button className="p-2 text-gray-500 hover:bg-gray-50 rounded-lg transition-colors">
+                          <Edit3 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Dates */}
+                    <div className="grid grid-cols-2 gap-4 text-sm">
+                      <div>
+                        <span className="text-gray-500 font-medium">
+                          Date added:
+                        </span>
+                        <div className="text-gray-600 mt-1">
+                          {member.dateAdded}
+                        </div>
+                      </div>
+                      <div>
+                        <span className="text-gray-500 font-medium">
+                          Last edited:
+                        </span>
+                        <div className="text-gray-600 mt-1">
+                          {member.lastEdited}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
