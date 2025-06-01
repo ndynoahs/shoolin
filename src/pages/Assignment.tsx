@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import { BookOpen, BarChart3, Clock, ArrowRight, Users, Calendar } from 'lucide-react';
+import ContentHeader from '../layout/ContentHeader';
 
-// Mock ContentHeader component
-const ContentHeader = ({ title }) => (
-  <div className="mb-6 lg:mb-8">
-    <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">{title}</h1>
-  </div>
-);
 
 // Mock data structure
 const courses = [
@@ -69,7 +64,7 @@ const questionData = {
   }
 };
 
-const ResponsiveAssignment = () => {
+const Assignment = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [selectedOption, setSelectedOption] = useState('');
   const [timeRemaining, setTimeRemaining] = useState(1800);
@@ -304,10 +299,10 @@ const ResponsiveAssignment = () => {
   // Courses List View
   if (!selectedCourse) {
     return (
-      <div className="min-h-screen bg-gray-50 flex">
-        <div className="flex-1 p-4 sm:p-6 lg:p-8">
-          <ContentHeader title="Assignments"/>
-             
+      <div className="min-h-screen bg-gray-50">
+         <ContentHeader title="Assignments"/>
+
+        <div className="flex-1 p-4 sm:p-6 lg:p-8">             
           {/* Courses Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {courses.map((course) => (
@@ -350,16 +345,16 @@ const ResponsiveAssignment = () => {
   }
   
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen flex-col">
+      <ContentHeader title="Assignment"/>
+
       <div className="flex-1 p-4 sm:p-6 lg:p-8">
-        <ContentHeader title="Assignment"/>
 
         {/* Header with Back Button */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6 mb-6 lg:mb-8">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 lg:gap-6">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 lg:gap-6">
               {/* Class Name */}
-              <div className="flex items-center space-x-2 min-w-0">
+            <div className="bg-white flex items-center py-2 px-6 space-x-2 lg:justify-end rounded-lg">
                 <div className={`w-8 h-8 ${headerIconBg} rounded-lg flex items-center justify-center`}>
                   <BookOpen className={`w-5 h-5 ${headerIconText}`} />
                 </div>
@@ -367,19 +362,18 @@ const ResponsiveAssignment = () => {
               </div>
               
               {/* Question Count */}
-              <div className="flex items-center space-x-2 min-w-0">
+            <div className="bg-white flex items-center py-2 px-6 space-x-2 lg:justify-end rounded-lg">
                 <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
                   <BarChart3 className="w-5 h-5 text-blue-600" />
                 </div>
-                <span className="font-semibold text-gray-800 truncate">{selectedCourse.questionCount} Questions</span>
+                <span className="font-semibold text-gray-800 truncate">01/{selectedCourse.questionCount} Questions</span>
               </div>
-            </div>
             
             {/* Timer */}
-            <div className="flex items-center space-x-2 lg:justify-end">
+            <div className="bg-white flex items-center py-2 px-6 space-x-2 lg:justify-end rounded-lg">
               <Clock className="w-5 h-5 text-orange-500 flex-shrink-0" />
               <span className="font-semibold text-orange-500 text-sm sm:text-base">
-                {formatTime(timeRemaining)}
+                {formatTime(timeRemaining)} Seconds
               </span>
             </div>
           </div>
@@ -439,4 +433,4 @@ const ResponsiveAssignment = () => {
   );
 };
 
-export default ResponsiveAssignment;
+export default Assignment;

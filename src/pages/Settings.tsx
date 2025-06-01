@@ -12,6 +12,7 @@ import {
   Trash2,
   Edit3
 } from 'lucide-react';
+import ContentHeader from '../layout/ContentHeader';
 
 interface TeamMember {
   id: string;
@@ -61,14 +62,9 @@ const TeamSettingsPage: React.FC = () => {
       {/* Main Content */}
       <div className="flex-1">
         {/* Header */}
-        <div className="bg-white border-b border-gray-200 px-8 py-6">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
-            <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
-              <div className="w-8 h-8 bg-blue-500 rounded-full"></div>
-            </div>
-          </div>
-        </div>
+
+        <ContentHeader title="Settings" />
+
 
         {/* Content */}
         <div className="p-8">

@@ -3,7 +3,8 @@ import Loader from '../components/Loader';
 import { Route, Routes } from 'react-router-dom';
 import NotFound from '../pages/not-found';
 import MainLayout from '../layout/MainLayout';
-import Classes from '../pages/Classes';
+import Classes from '../pages/Assignment';
+import Assignment from '../pages/Assignment';
 
 // Lazy-loaded pages
 const Home = lazy(() => import('../pages/Home'));
@@ -35,9 +36,9 @@ export default function AppRoutes() {
           </Suspense>
         } />
 
-          <Route path="classes" element={
+          <Route path="assignment" element={
           <Suspense fallback={<Loader />}>
-            <Classes />
+            <Assignment />
           </Suspense>
         } />
 

@@ -108,11 +108,11 @@ const ContentHeader: React.FC<HeaderProps> = ({
 <>
   {/* Fixed Header */}
   {/* <header className="pt-6 md:pt-0 md:fixed top-[30px]  md:top-0 left-0 right-0 z-40 bg-white border-b border-gray-200 shadow-sm rounded-xl"> */}
-  <header className=" md:top-0 left-0 right-0 z-40 bg-white border-b border-gray-200 shadow-sm rounded-xl">
+  <header className=" md:top-0 left-0 right-0 z-40 mt-10 md:mt-0 bg-white border-b border-gray-200 shadow-sm ">
     <div className="px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center  max-w-full">
       
       {/* Page Title */}
-      <h1 className="text-xl sm:text-xl font-bold text-gray-800 truncate">{title}</h1>
+      <h1 className="text-xl md:text-2xl font-bold text-gray-900 truncate">{title}</h1>
 
       {/* Profile Section */}
       <div className="relative">
@@ -187,7 +187,7 @@ const ContentHeader: React.FC<HeaderProps> = ({
   </header>
 
   {/* Spacer to prevent content overlap */}
-  <div className="h-20 sm:h-5" />
+  <div className="h-5" />
 </>
 
   );
